@@ -1,0 +1,71 @@
+_env:
+    - !R.env
+        _name    : "define"
+        _res :
+            - !R.vars
+                PRJ_NAME    : "webgrind"
+            - !R.include
+                _path :
+                    - "/data/x/etc/mara_env/rigger/mara_v1.yaml"
+
+    - !R.env
+        _name : "base"
+        _mix  : "_base"
+        _res :
+            - !R.vars
+                DIST_ENTRY   : "dist/"
+                PORT         : "80"
+
+    - !R.env
+        _name    : "dev"
+        _mix     : "define,_local_deploy,_dev,base"
+        _res :
+            - !R.vars
+                BASE_DOMAIN     : "${USER}.dev.mararun.cn"
+
+    - !R.env
+        _name    : "ci"
+        _mix     : "define,_ci_deploy,_ci,base"
+        _res :
+            - !R.vars
+                BASE_DOMAIN : "ci.mararun.cn"
+
+    - !R.env
+        _name    : "lab"
+        _mix     : "define,_project_deploy,_lab,base"
+        _res :
+            - !R.vars
+                BASE_DOMAIN : "lab.mararun.cn"
+
+    - !R.env
+        _name    : "demo"
+        _mix     : "define,_project_deploy,_demo,base"
+        _res :
+            - !R.vars
+                BASE_DOMAIN : "demo.mararun.cn"
+
+    - !R.env
+        _name    : "test"
+        _mix     : "define,_project_deploy,_test,base"
+        _res :
+            - !R.vars
+                BASE_DOMAIN : "test.mararun.cn"
+
+    - !R.env
+        _name    : "online"
+        _mix     : "define,_project_deploy,_online,base"
+        _res :
+            - !R.vars
+                BASE_DOMAIN : "mararun.cn"
+_sys:
+    - !R.system
+        _name : "web"
+        _res  :
+            - !R.vars
+                DOMAIN      : "webgrind.${BASE_DOMAIN}"
+            - !R.using
+                modul : "mara_web"
+                args  : !R.vars
+                    API_ENTRY    : "${PRJ_ROOT}/src/sys_${SYS_NAME}"
+                    INCLUDE_PATH : "${PRJ_ROOT}/src/sys_${SYS_NAME}"
+

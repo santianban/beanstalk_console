@@ -1,0 +1,12 @@
+_rg/.rigger-ng-v2.data
+conf/used/
+run.log
+run/
+test/reports/*
+test/report/*
+*swp
+*.sonar
+sonar*
+bin/url.txt
+*.swo
+bin/*.txt
