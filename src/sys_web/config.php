@@ -39,7 +39,7 @@ class Webgrind_Config extends Webgrind_MasterConfig {
     /**
      * Path to python executable
      */
-    static $pythonExecutable = '/usr/bin/python';
+    static $pythonExecutable = '/usr/local/python/bin/python';
 
     /**
      * Path to graphviz dot executable
