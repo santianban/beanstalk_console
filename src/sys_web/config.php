@@ -17,7 +17,6 @@ class Webgrind_Config extends Webgrind_MasterConfig {
      * If empty, will use system tmp folder or xdebug tmp
      */
     static $storageDir = '';
-    static $profilerDir = '/tmp/xdebug';
 
     /**
      * Suffix for preprocessed files
@@ -111,7 +110,7 @@ class Webgrind_Config extends Webgrind_MasterConfig {
     static function xdebugOutputDir() {
         $dir = ini_get('xdebug.profiler_output_dir');
         if ($dir=='') // Ini value not defined
-            return realpath(Webgrind_Config::$profilerDir).'/';
+            return realpath($_SERVER["PROFILE_DIR"]).'/';
         return realpath($dir).'/';
     }
 

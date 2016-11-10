@@ -22,6 +22,7 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN     : "${USER}.dev.mararun.cn"
+                PROFILE_DIR     : "/home/${USER}/devspace/xdebug"
 
     - !R.env
         _name    : "ci"
@@ -29,6 +30,7 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "ci.mararun.cn"
+                PROFILE_DIR : "/data/jenkins/workspace/xdebug"
 
     - !R.env
         _name    : "lab"
@@ -36,6 +38,7 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "lab.mararun.cn"
+                PROFILE_DIR : "/data/x/projects/xdebug"
 
     - !R.env
         _name    : "demo"
@@ -43,6 +46,7 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "demo.mararun.cn"
+                PROFILE_DIR : "/data/x/projects/xdebug"
 
     - !R.env
         _name    : "test"
@@ -50,6 +54,7 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "test.mararun.cn"
+                PROFILE_DIR : "/data/x/projects/xdebug"
 
     - !R.env
         _name    : "online"
