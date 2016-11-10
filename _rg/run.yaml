@@ -23,6 +23,10 @@ _env:
             - !R.vars
                 BASE_DOMAIN     : "${USER}.dev.mararun.cn"
                 PROFILE_DIR     : "/home/${USER}/devspace/xdebug"
+            - !R.path
+                dst   : "/home/${USER}/devspace/xdebug"
+                keep  : True
+                chmod : "o+w"
 
     - !R.env
         _name    : "ci"
