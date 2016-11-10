@@ -1,0 +1,9 @@
+_dev:
+    - !C.project
+        name : "webgrind"
+        root : "./"
+    - !C.version
+        file : "src/version.txt"
+    - !C.git
+        remote : "git@git.mararun.cn:mara/webgrind.git"
+
