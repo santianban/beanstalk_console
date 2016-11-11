@@ -71,7 +71,7 @@ _sys:
         _name : "web"
         _res  :
             - !R.vars
-                DOMAIN      : "webgrind.${BASE_DOMAIN}"
+                DOMAIN      : "xdebug.${BASE_DOMAIN}"
             - !R.using
                 modul : "mara_web"
                 args  : !R.vars
