@@ -118,8 +118,8 @@ class Webgrind_Config extends Webgrind_MasterConfig {
      * Writable dir for information storage
      */
     static function storageDir() {
-        if (!empty(Webgrind_Config::$storageDir))
-            return realpath(Webgrind_Config::$storageDir).'/';
+        if (empty(Webgrind_Config::$storageDir))
+            return realpath($_SERVER["PROFILE_DIR"]).'/';
 
         if (!function_exists('sys_get_temp_dir') || !is_writable(sys_get_temp_dir())) {
             // use xdebug setting
