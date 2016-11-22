@@ -1,9 +1,9 @@
 _dev:
     - !C.project
-        name : "webgrind"
+        name : "beanstalk_console"
         root : "./"
     - !C.version
         file : "src/version.txt"
     - !C.git
-        remote : "git@git.mararun.cn:mara/webgrind.git"
+        remote : "git@git.mararun.cn:mara/beanstalk_console.git"
 

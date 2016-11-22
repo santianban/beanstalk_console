@@ -3,7 +3,7 @@ _env:
         _name    : "define"
         _res :
             - !R.vars
-                PRJ_NAME    : "webgrind"
+                PRJ_NAME    : "beanstalk_console"
             - !R.include
                 _path :
                     - "/data/x/etc/mara_env/rigger/mara_v1.yaml"
@@ -22,11 +22,6 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN     : "${USER}.dev.mararun.cn"
-                PROFILE_DIR     : "/home/${USER}/devspace/xdebug"
-            - !R.path
-                dst   : "/home/${USER}/devspace/xdebug"
-                keep  : True
-                chmod : "o+w"
 
     - !R.env
         _name    : "ci"
@@ -34,7 +29,6 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "ci.mararun.cn"
-                PROFILE_DIR : "/data/jenkins/workspace/xdebug"
 
     - !R.env
         _name    : "lab"
@@ -42,7 +36,6 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "lab.mararun.cn"
-                PROFILE_DIR : "/data/x/projects/xdebug"
 
     - !R.env
         _name    : "demo"
@@ -50,7 +43,6 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "demo.mararun.cn"
-                PROFILE_DIR : "/data/x/projects/xdebug"
 
     - !R.env
         _name    : "test"
@@ -58,7 +50,6 @@ _env:
         _res :
             - !R.vars
                 BASE_DOMAIN : "test.mararun.cn"
-                PROFILE_DIR : "/data/x/projects/xdebug"
 
     - !R.env
         _name    : "online"
@@ -71,7 +62,7 @@ _sys:
         _name : "web"
         _res  :
             - !R.vars
-                DOMAIN      : "xdebug.${BASE_DOMAIN}"
+                DOMAIN      : "beanstalk.${BASE_DOMAIN}"
             - !R.using
                 modul : "mara_web"
                 args  : !R.vars
