@@ -220,47 +220,10 @@ class BeanstalkInterface {
     }
 
     private function _decodeDate($pData) {
-        $this->_contentType = false;
-        $out = $pData;
-        $data = null;
-
-        if (@$_COOKIE['isEnabledBase64Decode'] == 1) {
-            $mixed = set_error_handler(array($this, 'exceptions_error_handler'));
-            try {
-                $data = base64_decode($pData);
-            } catch (Exception $e) {
-                $data = $e->getMessage();
-            }
-            ob_get_clean();
-            // restore old error handler
-            restore_error_handler();
-        }
-        
-        if (@$_COOKIE['isDisabledUnserialization'] != 1) {
-            $mixed = set_error_handler(array($this, 'exceptions_error_handler'));
-            try {
-                $data = unserialize($pData);
-            } catch (Exception $e) {
-                $data = $e->getMessage();
-            }
-            ob_get_clean();
-            // restore old error handler
-            restore_error_handler();
-        }
-
-        if ($data) {
-            $this->_contentType = 'php';
-            $out = $data;
-        } else {
-            if (@$_COOKIE['isDisabledJsonDecode'] != 1) {
-                $data = @json_decode($pData, true);
-            }
-            if ($data) {
-                $this->_contentType = 'json';
-                //$out = $data;
-            }
-        }
-        return $out;
+        $data           = @json_decode($pData, true);
+        $data["data"]   = base64_decode($data["data"]);
+        $this->_contentType = 'json';
+        return $data;
     }
 
     public function exceptions_error_handler($severity, $message, $filename, $lineno) {
